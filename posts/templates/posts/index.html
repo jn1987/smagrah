@@ -1,0 +1,15 @@
+{% extends 'posts/layout.html' %}
+
+{% block content %}
+<h3 class ="center-align"> {{title}}</h3>
+<a href = "/admin" class = "btn" style="float:right">Create Posts</a>
+<br> 
+<br>
+<br>
+<ol class ="collection">
+    {% for post in posts %}
+    <li class = "collection-item"><a href = "/posts/details/{{post.id}}">{{post.title}}</a></li>
+    {% endfor %}
+</ol>
+
+{% endblock %}
