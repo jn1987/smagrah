@@ -12,11 +12,12 @@ def index(request):
 
      return render(request,'posts/index.html',context)   
 
-def details(request,id):
-     Post = posts.objects.get(id=id)
+def details(request,id,title):
+   return HttpResponse(title)
+    #  Post = posts.objects.get(id=id)
 
-     context = {
-       'post':Post
-        }
+    #  context = {
+    #    'post':Post
+    #     }
 
-     return render(request,'posts/details.html',context)
+    #  return render(request,'posts/details.html',context)

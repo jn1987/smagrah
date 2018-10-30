@@ -4,5 +4,5 @@ from .import views
 
 urlpatterns = [
         path('', views.index, name='index'),
-        url(r'^details/(?P<id>\d+)/$', views.details, name='details'),
+        url(r'^details/(?P<id>\d+)/(?P<title>[\w-]+)/$', views.details),
     ];
