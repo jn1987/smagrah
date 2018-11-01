@@ -20,5 +20,9 @@ urlpatterns = [
     path('',include('posts.urls')),
     path('admin/', admin.site.urls),
     path('posts/',include('posts.urls')),
-    
+       
     ]
+
+admin.site.site_header = "SAMAGRAH"
+admin.site.site_title = "SAMAGRAH Admin Portal"
+admin.site.index_title = "SAMAGRAH Admin Portal" 
