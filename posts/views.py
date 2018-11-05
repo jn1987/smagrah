@@ -13,9 +13,9 @@ def index(request):
 
      return render(request,'posts/index.html',context)   
 
-def details(request,id,title):
+def details(request,id,slug):
   
-     Post = posts.objects.get(slug=title)
+     Post = posts.objects.get(id=id)
 
      context = {
        'post':Post
