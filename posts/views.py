@@ -31,7 +31,7 @@ def new(request):
             # post.title = request.user
             # post.published_date = timezone.now()
             post.save()
-            # return redirect('index', pk=post.pk)
+            return redirect('index')
   else:
         form = Post_Form()
   return render(request, 'posts/new.html', {'form': form})
