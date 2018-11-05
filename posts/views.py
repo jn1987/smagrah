@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import posts
+from .forms import Post_Form
 # Create your views here.
 def index(request):
      Posts = posts.objects.all()
@@ -21,3 +22,16 @@ def details(request,id,title):
         }
 
      return render(request,'posts/details.html',context)
+
+def new(request):
+  if request.method == "POST":
+        form = Post_Form(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            # post.title = request.user
+            # post.published_date = timezone.now()
+            post.save()
+            # return redirect('index', pk=post.pk)
+  else:
+        form = Post_Form()
+  return render(request, 'posts/new.html', {'form': form})

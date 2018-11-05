@@ -9,6 +9,6 @@ class postsAdmin(admin.ModelAdmin):
       admin.site.register(posts)
       fields = ('title', 'body')
 
-class AuthorAdmin(admin.ModelAdmin):
+class postsAdmin(admin.ModelAdmin):
  
       exclude = ('slug',)

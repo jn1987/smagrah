@@ -29,7 +29,7 @@ class posts(models.Model):
         super().save(*args, **kwargs)
 
 class PostAdmin(admin.ModelAdmin):
-      exclude = ('slug',)
+      list_display = ('Title', 'Body')
 
 
 # Create your models here.

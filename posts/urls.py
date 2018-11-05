@@ -5,4 +5,5 @@ from .import views
 urlpatterns = [
         path('', views.index, name='index'),
         url(r'^details/(?P<id>\d+)/(?P<title>[\w-]+)/$', views.details),
+        path('posts/new', views.new, name='new'),
     ];
