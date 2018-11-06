@@ -2,14 +2,22 @@
 
 {% block content %}
 <h3 class ="center-align"> {{title}}</h3>
-<a href = "posts/new" class = "btn" style="float:right">Create Posts</a>
-<br> 
-<br>
-<br>
-<ol class ="collection">
-    {% for post in posts %}
-    <li class = "collection-item"><a href = "/posts/details/{{post.id}}/{{post.slug}}">{{post.title}}</a></li>
-    {% endfor %}
-</ol>
+<a href = "posts/signup" class = "btn" style="float:right">Signup</a>
+
+<div class = "container">
+<form action = "search/" method ="get">
+    <input type ="text" name="q">
+    <input type ="submit" value ="Search">
+</form>
+</div>
+
+<div class ="container">
+    <a href = "posts/new" class = "btn" style="float:right">Create Posts</a>
+    <ol class ="collection">
+      {% for post in posts %}
+        <li class = "collection-item"><a href = "/posts/details/{{post.id}}/{{post.slug}}">{{post.title}}</a></li>
+     {% endfor %}
+    </ol>
+</div>
 
 {% endblock %}

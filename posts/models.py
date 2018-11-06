@@ -2,12 +2,17 @@ from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
 from django.contrib import admin
+from django.contrib.auth.models import User
+# from django.db.models.signals import post_save
+# from django.dispatch import receiver
 
 # Create your models here.
 class posts(models.Model):
     title=models.CharField(max_length=256)
     slug=models.SlugField(max_length=250,blank=True)
     body=models.TextField()
+    author=models.TextField(max_length= 25, default="Admin")
+    tags=models.TextField(default="none")
     created_at=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title
@@ -29,7 +34,7 @@ class posts(models.Model):
         super().save(*args, **kwargs)
 
 class PostAdmin(admin.ModelAdmin):
-      list_display = ('Title', 'Body')
+      list_display = ('Title', 'Body','Tags')
 
 
 # Create your models here.

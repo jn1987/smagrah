@@ -1,0 +1,21 @@
+{% extends 'posts/layout.html' %}
+
+{% block content %}
+<h3 class ="center-align"> {{title}}</h3>
+<div class = "container">
+<form method ="get">
+    <input type ="text" name="q">
+    <input type ="submit" value ="Search">
+</form>
+</div>
+
+<div class ="container">
+        <p>You searched for: <strong>{{ query }}</strong></p>
+     <ol class ="collection">
+      {% for item in items %}
+        <li class = "collection-item"><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>
+     {% endfor %}
+    </ol>
+</div>
+ <a href = "/posts" class = "btn">Go Back</a>
+{% endblock %}
