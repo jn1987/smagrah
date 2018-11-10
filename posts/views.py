@@ -78,7 +78,7 @@ def login_view(request):
             # raw_password = form.cleaned_data.get('password1')
             # user = authenticate(username=username, password=raw_password)
             login(request, user)
-            items = posts.objects.annotate(search=SearchVector('user')).filter(search= user)
+            # items = posts.objects.annotate(search=SearchVector('user')).filter(search= user)
             return redirect('index')
             
   else:
