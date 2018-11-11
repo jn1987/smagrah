@@ -9,10 +9,11 @@ from django.contrib.postgres.search import SearchVector
 # Create your views here.
 def index(request):
      Posts = posts.objects.all()
-
+     username = request.user.username
      context = {
         'title':'All Posts',
-        'posts':Posts
+        'posts':Posts,
+        'username':username
      }
 
      return render(request,'posts/index.html',context)   
@@ -79,8 +80,10 @@ def login_view(request):
             # raw_password = form.cleaned_data.get('password1')
             # user = authenticate(username=username, password=raw_password)
             login(request, user)
-            userid= User.objects.get(username=username).pk
-            items = posts.objects.annotate(search=SearchVector('author_id')).filter(search= userid)
+            user_id= User.objects.get(username=username).pk
+            # items = posts.objects.annotate(search=SearchVector('author_id')).filter(search=user_id)
+            # items = posts.objects.get(author_id=user_id)
+            items = posts.objects.filter(author_id=user_id)
             return render(request,'posts/user_login.html', 
                                   {'items':items, 'username':username})      
   else:
