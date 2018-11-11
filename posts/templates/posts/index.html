@@ -1,11 +1,22 @@
 {% extends 'posts/layout.html' %}
 
 {% block content %}
-<h3 class ="center-align"> {{title}}</h3>
-<p style="float:right">
-<a href = "posts/signup">Signup/</a>
-<a href = "posts/login">Login</a>
-</p>
+
+
+    {% if user.is_authenticated %}
+    <p style ="float:right">
+            Welcome {{username}}           
+            <a href="/posts/logout/">Logout</a>
+    </p>
+    <a href = "posts/new" class = "btn" style="float:right">Create Posts</a>
+    {% else %}
+    <p style ="float:right">
+            <a href="/posts/signup/">Signup/</a> 
+            <a href="/posts/login/">Login</a>
+    </p>
+    {% endif %}
+    
+
 <div class = "container">
 <form action = "search/" method ="get">
     <input type ="text" name="q">
@@ -14,7 +25,7 @@
 </div>
 
 <div class ="container">
-    <a href = "posts/new" class = "btn" style="float:right">Create Posts</a>
+  
     <ol class ="collection">
       {% for post in posts %}
         <li class = "collection-item"><a href = "/posts/details/{{post.id}}/{{post.slug}}">{{post.title}}</a></li>

@@ -1,0 +1,25 @@
+{% extends 'posts/layout.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+         <p>   Welcome {{username}}           
+            <a href="/posts/logout/">Logout</a>
+         </p>
+            <a href = "posts/new" class = "btn" style="float:right">Create Posts</a>
+
+     <ol class ="collection">
+      {% for item in items %}
+        <li class = "collection-item"><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>
+     {% endfor %}
+    </ol>
+
+    {% else %}
+    <p>
+       <a href="/posts/signup/">Register</a> 
+       <a href="/posts/login/">Login</a>
+   </p>
+    {% endif %}
+
+ <a href = "/posts" class = "btn">Home</a>
+{% endblock %}

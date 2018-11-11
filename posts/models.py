@@ -11,7 +11,7 @@ class posts(models.Model):
     title=models.CharField(max_length=256)
     slug=models.SlugField(max_length=250,blank=True)
     body=models.TextField()
-    author=models.TextField(max_length= 25, default="Admin")
+    author = models.ForeignKey(User, models.SET_NULL, null=True, blank=True,)
     tags=models.TextField(default="none")
     created_at=models.DateTimeField(auto_now_add=True)
     def __str__(self):
