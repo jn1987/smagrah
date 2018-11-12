@@ -10,7 +10,14 @@
 </div>
 
 <div class ="container">
-        <p>You searched for: <strong>{{ query }}</strong></p>
+        <p>
+            You searched for: <strong>{{ query }}</strong>.
+            {% if items %}
+            Found <strong>{{items|length}}</strong> posts matching your query
+            {% else %}
+            Sorry. There are no posts matching your query
+            {% endif %}
+        </p>
      <ol class ="collection">
       {% for item in items %}
         <li class = "collection-item"><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>

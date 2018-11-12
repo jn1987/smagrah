@@ -33,6 +33,7 @@ def new(request):
         form = Post_Form(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
+            post.author=request.user
             post.save()
             return redirect('index')
   else:
