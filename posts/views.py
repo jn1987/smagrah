@@ -35,7 +35,8 @@ def new(request):
             post = form.save(commit=False)
             post.author=request.user
             post.save()
-            return redirect('index')
+        return redirect('index')
+
   else:
         form = Post_Form()
   return render(request, 'posts/new.html', {'form': form})
@@ -98,3 +99,14 @@ def logout_view(request):
     username = request.user.username
     logout(request)
     return render(request,'posts/user_logout.html',{'username':username})
+
+def my_posts(request):
+    user_id= request.user.pk
+    username = request.user.username
+    items = posts.objects.filter(author_id=user_id)
+    if (items):
+      return render(request,'posts/myposts.html', 
+              {'items':items, 'username':username})
+    else:
+      return render(request,'posts/myposts.html', 
+              {'items':[], 'username':username})

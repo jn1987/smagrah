@@ -13,6 +13,7 @@ urlpatterns = [
         path('posts/signup/', views.signup, name='signup'),
         path('login/', views.login_view, name='login'),
         path('posts/login/', views.login_view, name='login'),
+        path('posts/myposts', views.my_posts, name='myposts'),
         path('logout/', views.logout_view, name='logout'),
         path('posts/logout/', views.logout_view, name='logout'),
     ];
