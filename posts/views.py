@@ -33,8 +33,6 @@ def new(request):
         form = Post_Form(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            # post.title = request.user
-            # post.published_date = timezone.now()
             post.save()
             return redirect('index')
   else:
@@ -84,8 +82,13 @@ def login_view(request):
             # items = posts.objects.annotate(search=SearchVector('author_id')).filter(search=user_id)
             # items = posts.objects.get(author_id=user_id)
             items = posts.objects.filter(author_id=user_id)
-            return render(request,'posts/user_login.html', 
-                                  {'items':items, 'username':username})      
+            if (items):
+             return render(request,'posts/user_login.html', 
+                                  {'items':items, 'username':username})
+            else:
+              return render(request,'posts/user_login.html', 
+                                  {'items':[], 'username':username})
+                  
   else:
         form = AuthenticationForm()
   return render(request, 'posts/login.html', {'form': form})

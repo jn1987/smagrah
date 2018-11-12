@@ -3,17 +3,23 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-         <p>   Welcome {{username}}           
+         <p>   Welcome! {{username}}           
             <a href="/posts/logout/">Logout</a>
          </p>
+         <p>
             <a href = "posts/new" class = "btn" style="float:right">Create Posts</a>
-
-     <ol class ="collection">
-      {% for item in items %}
-        <li class = "collection-item"><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>
-     {% endfor %}
-    </ol>
-
+        </p>
+        <ol class ="collection">
+            {% if items|length > 1 %}
+                {% for item in items %}
+                    <li class = "collection-item"><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>
+                {% endfor %}
+            {% elif items %}
+                <li class = "collection-item"><a href = "/posts/details/{{items.0.id}}/{{items.0.slug}}">{{items.0.title}}</a></li>
+            {% else %}
+                <p> No Post</p>
+            {% endif %}
+        </ol>
     {% else %}
     <p>
        <a href="/posts/signup/">Register</a> 
