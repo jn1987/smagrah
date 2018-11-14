@@ -1,0 +1,77 @@
+.site{
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 10% 10% 70% 10%;
+    grid-template-areas: 
+    "header header header"
+    "navigation navigation navigation"
+    "left-sidebar main right-sidebar"
+    "footer footer footer";
+}
+
+.masthead{
+    grid-area: header; 
+    background-color: blue;
+    max-height: 100px;
+}
+
+.masthead h1{
+    text-align: center;
+    color:black;
+}
+.navigation{
+    grid-area: navigation;
+    background-color: #e9a05c;
+    text-align: right;
+    max-height: 100px;
+    
+}
+
+.main-content{
+    grid-area: main;
+    min-height: 900px;
+   
+ }   
+
+.right-sidebar{
+    grid-area:right-sidebar;
+    background-color: rgb(98, 131, 67);
+}
+.left-sidebar{
+    grid-area:left-sidebar;
+    background-color:#a1dceb;
+}
+.footbar{
+    grid-area:footer;
+    background-color: #aaaaaa;
+    max-height: 100px;
+
+}
+
+
+.box-1{
+    margin: 0px;
+    background-color: blue;
+    text-align: center;
+    height: 50px;
+}
+
+.searchbar{
+    margin: 5px;
+    padding: 1em;
+        }
+
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+p{
+    padding:1em;
+    text-align: justify;
+}
+
+h3{
+  text-align: center;
+  }

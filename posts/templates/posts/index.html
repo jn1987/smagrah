@@ -1,39 +1,75 @@
 {% extends 'posts/layout.html' %}
 
-{% block content %}
 
 
+{% block navigation %}
     {% if user.is_authenticated %}
-    <p style ="float:right">
+    <nav class="navigation">
             Welcome! {{username}}           
             <a href="/posts/logout/">Logout</a>
-    </p>
-    <p>
-    <a href = "posts/new" class = "btn" style="float:right">Create Posts</a>
-    <a href = "myposts" class = "btn" style="float:right">My Posts</a>
-    </p>
-    {% else %}
-    <p style ="float:right">
-            <a href="/posts/signup/">Signup/</a> 
-            <a href="/posts/login/">Login</a>
-    </p>
-    {% endif %}
+    </nav>
     
-
-<div class = "container">
-<form action = "search/" method ="get">
-    <input type ="text" name="q">
-    <input type ="submit" value ="Search">
-</form>
-</div>
-
-<div class ="container">
+    <button class="button">
+        <a href = "posts/new">Create Posts</a>
+    </button>
+    <button class="button">
+        <a href = "posts/myposts">My Posts</a>
+    </button>
+    
+    {% else %}
+    <nav class ="navigation">
+              <button class="button">
+            <a href="/posts/signup/">Signup</a> 
+        </button>
+        
+        <button class="button">
+            <a href="/posts/login/">Login</a>
+        </button>
   
-    <ol class ="collection">
-      {% for post in posts %}
-        <li class = "collection-item"><a href = "/posts/details/{{post.id}}/{{post.slug}}">{{post.title}}</a></li>
-     {% endfor %}
-    </ol>
-</div>
+    </nav>
+    {% endif %}
 
-{% endblock %}
+{% endblock navigation %}
+
+{% block content %}
+    
+    <div class ="container">
+            <ul>
+        {% for post in posts %}
+            <h4>
+            <li><a href = "/posts/details/{{post.id}}/{{post.slug}}">{{post.title|upper}}</a></li>
+            </h4>
+            <p>{{post.body|truncatewords:100}}<a href = "/posts/details/{{post.id}}/{{post.slug}}"> >>>Readmore</a> </p>
+        {% endfor %}
+        </ul>
+    </div>
+
+{% endblock content %}
+
+{% block right-sidebar %}
+        <div class = "searchbar">
+            <form action = "search/" method ="get">
+                <input type ="text" name="q">
+                <input type ="submit" value ="Search">
+            </form>
+        </div>
+
+    {% if user.is_authenticated %}
+        <h4>My Posts</h4>
+            <ol class ="collection">
+                {% if items|length > 1 %}
+                    {% for item in items %}
+                        <li class = "collection-item"><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>
+                    {% endfor %}
+                {% elif items %}
+                    <li class = "collection-item"><a href = "/posts/details/{{items.0.id}}/{{items.0.slug}}">{{items.0.title}}</a></li>
+                {% else %}
+                    <p> No Post</p>
+                {% endif %}
+            </ol>
+    {% else %}
+        <p>
+
+        </p>
+    {% endif %}
+{% endblock right-sidebar %}

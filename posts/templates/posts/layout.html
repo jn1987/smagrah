@@ -1,20 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <title>posts</title>
+    <title>posts</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible"
   content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" -->
+<link rel="stylesheet" type="text/css" href ="{% static 'posts/style.css' %}">
 </head>
-<body>  
-    <h1 class="center-align">SAMAGRAH</h1>
-    <div id = "content" class ="container">
+
+<body> 
+    <div class="site">
+        <header class="masthead">
+             <h1>SAMAGRAH</h1>
+        </header> 
+        <nav class="navigation">
+            {% block navigation %}
+            {% endblock navigation %}
+        </nav>
+        <div class ="main-content">
         {% block content %}
         {% endblock content %}
+        </div>
+        <aside class="left-sidebar">
+            <p>Welcome</p>
+        </aside>
+        <aside class="right-sidebar">
+            {% block right-sidebar %}
+            {% endblock right-sidebar %}
+        </aside>
+        <footer class="footbar">Copyright &copy;2018 All rights reserved.</footer>
     </div>
 </body>
-</html>
+
+</html> 

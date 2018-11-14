@@ -8,15 +8,18 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.postgres.search import SearchVector
 # Create your views here.
 def index(request):
-     Posts = posts.objects.all()
-     username = request.user.username
-     context = {
-        'title':'All Posts',
-        'posts':Posts,
-        'username':username
-     }
-
-     return render(request,'posts/index.html',context)   
+  Posts = posts.objects.all() [:10]
+  username = request.user.username
+  user_id= request.user.pk
+  items = posts.objects.filter(author_id=user_id)
+  return render(request,'posts/index.html', 
+              {'posts':Posts,'items':items, 'username':username})
+    #  context = {
+    #     'title':'All Posts',
+    #     'posts':Posts,
+    #     'username':username
+    #  }
+    #  return render(request,'posts/index.html',context)   
 
 def details(request,id,slug):
   
