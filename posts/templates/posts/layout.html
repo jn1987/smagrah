@@ -10,64 +10,6 @@
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" -->
 <link rel="stylesheet" type="text/css" href ="{% static 'posts/style.css' %}">
 
-<script type="text/javascript">
-    function highlightSelection() {
-        var selection;
-
-        //Get the selected stuff
-        if (window.getSelection)
-            selection = window.getSelection();
-        else if (typeof document.selection != "undefined")
-            selection = document.selection;
-
-        //Get a the selected content, in a range object
-        var range = selection.getRangeAt(0);
-
-        //If the range spans some text, and inside a tag, set its css class.
-        if (range && !selection.isCollapsed) {
-            if (selection.anchorNode.parentNode == selection.focusNode.parentNode) {
-                var span = document.createElement('span');
-                span.className = 'highlight';
-                range.surroundContents(span);
-            }
-        }
-    }
-
-
-
-    function RemovehighlightSelection() {
-        var selection;
-
-        //Get the selected stuff
-        if (window.getSelection)
-            selection = window.getSelection();
-        else if (typeof document.selection != "undefined")
-            selection = document.selection;
-
-        //Get a the selected content, in a range object
-        var range = selection.getRangeAt(0);
-
-        //If the range spans some text, and inside a tag, set its css class.
-        if (range && !selection.isCollapsed) {
-            if (selection.anchorNode.parentNode == selection.focusNode.parentNode) {
-                var span = document.createElement('span');
-                span.className = 'un-highlight';
-                range.surroundContents(span);
-            }
-        }
-    }
-</script>
-<style type="text/css">
-    .highlight 
-    {
-        background-color: #00FF00;
-    }
-    
-    .un-highlight
-    {
-        background-color: #ffffdd;
-    }
-</style>
 </head>
 
 <body> 
