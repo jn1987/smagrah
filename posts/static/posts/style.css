@@ -1,8 +1,16 @@
+html {
+    min-height: 100%;
+ }    
+
 .site{
-    margin:0 auto;
+    margin:0px;
+    padding:0px;
+    background-color:#ffffff;
     display:grid;
-    grid-template-columns: 25% 50% 25%;
-    grid-template-rows: 10% 10% 70% 10%;
+    width: 100%;
+    height:100%;
+    grid-template-columns: 15% 70% auto;
+    grid-template-rows: auto auto 80% auto;
     grid-template-areas: 
     "header header header"
     "navigation navigation navigation"
@@ -13,8 +21,8 @@
 .masthead{
     grid-area: header; 
     background-color: blue;
-    max-height: 100px;
-}
+    height:100%;
+   }
 
 .masthead h1{
     text-align: center;
@@ -22,50 +30,52 @@
 }
 .navigation{
     grid-area: navigation;
+    height:100%;
     background-color: #e9a05c;
     text-align: right;
-    max-height: 100px;
-    
-}
+  }
 
 .main-content{
     grid-area: main;
-    min-height: 900px;
-   
- }   
+    padding:1em;
+    width:96%; 
+     }   
 
 .right-sidebar{
     grid-area:right-sidebar;
-    background-color: rgb(98, 131, 67);
+    padding:1em;
+    background-color:#4392ec;
 }
 .left-sidebar{
     grid-area:left-sidebar;
-    background-color:#a1dceb;
+    padding:1em;
+    background-color: #4392ec;
 }
 .footbar{
+    margin:0px;
+    padding:1em;
     grid-area:footer;
-    background-color: #aaaaaa;
-    max-height: 100px;
-
+    text-align: center;
 }
 
 
 .box-1{
     margin: 0px;
-    background-color: blue;
-    text-align: center;
+    padding: 1em;
+    background-color: rgb(152, 152, 153);
+    text-align: left;
     height: 50px;
 }
 
 .searchbar{
-    margin: 5px;
+    margin: 0px;
     padding: 1em;
         }
 
 .container{
-    width: 80%;
-    margin: auto;
-}
+    width: 100%;
+    padding:1em;
+            }
 
 p{
     padding:1em;
@@ -75,3 +85,31 @@ p{
 h3{
   text-align: center;
   }
+
+.btn{
+    background-color: #ffffff;
+    text-align: center;
+    text-emphasis: none;
+    padding: 5px;
+    width:100px;
+    height:20px;
+   }
+
+.card{
+    padding:2px;
+    
+}
+.card-content{
+    padding:1em;
+    background-color: #b6b5af;
+}
+
+.highlight 
+    {
+        background-color: rgb(249, 252, 249);
+    }
+    
+    .un-highlight
+    {
+        background-color: #ffffdd;
+    }

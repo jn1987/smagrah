@@ -16,4 +16,5 @@ urlpatterns = [
         path('posts/myposts', views.my_posts, name='myposts'),
         path('logout/', views.logout_view, name='logout'),
         path('posts/logout/', views.logout_view, name='logout'),
+        path('^details/(?P<id>\d+)/(?P<slug>[\w-]+)/search/', views.search),
     ];

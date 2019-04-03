@@ -1,7 +1,7 @@
 {% extends 'posts/layout.html' %}
 
 {% block content %}
-<h3 class ="center-align"> {{title}}</h3>
+
 <div class = "container">
 <form method ="get">
     <input type ="text" name="q">
@@ -13,16 +13,22 @@
         <p>
             You searched for: <strong>{{ query }}</strong>.
             {% if items %}
-            Found <strong>{{items|length}}</strong> posts matching your query
+                 Found <strong>{{items|length}}</strong> posts matching your query
             {% else %}
-            Sorry. There are no posts matching your query
+                Sorry. There are no posts matching your query
             {% endif %}
         </p>
-     <ol class ="collection">
+    
       {% for item in items %}
-        <li class = "collection-item"><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>
+         <ul>
+            <div class = "card-content">
+                <li ><a href = "/posts/details/{{item.id}}/{{item.slug}}">{{item.title}}</a></li>
+            </div>
+        </ul>
      {% endfor %}
-    </ol>
+    
 </div>
- <a href = "/posts" class = "btn">Go Back</a>
+<div class ="container">
+    <a href = "/posts" class="button">Go Back</a>   
+</div>
 {% endblock %}

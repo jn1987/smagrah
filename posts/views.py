@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.postgres.search import SearchVector
 # Create your views here.
 def index(request):
-  Posts = posts.objects.all() [:10]
+  Posts = posts.objects.all() [:6]
   username = request.user.username
   user_id= request.user.pk
   items = posts.objects.filter(author_id=user_id)
@@ -57,8 +57,8 @@ def search(request):
 #     if 'q' in request.GET:
 #         message = 'You searched for: %r' % request.GET['q']
       else:
-        message = 'You submitted an empty form.'
-      return HttpResponse(message)
+       return redirect('index')
+      
 
 def signup(request):
     if request.method == 'POST':
